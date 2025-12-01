@@ -29,7 +29,7 @@ function VideoUploadForm() {
             return response
         } catch (error) {
             console.log("ERROR UPLADING VIDEO::", error.message);
-            
+            setProgress(false)
             throw new Error(error)
         }
     };
