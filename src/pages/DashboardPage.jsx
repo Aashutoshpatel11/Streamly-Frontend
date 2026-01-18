@@ -5,6 +5,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import VideoUploadForm from '../components/VideoUploadForm';
 import { toast } from 'react-toastify';
 
+
 const MetricCard = ({ title, value }) => (
     <div className=" p-4 rounded-lg shadow-md border border-gray-100  dark:border-gray-700">
         <p className="text-sm font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">{title}</p>

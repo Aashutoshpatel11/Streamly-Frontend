@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import CommentTweetCard from './CommentTweetCard'
 import {useSelector} from 'react-redux'
+import Loading from './Loading';
 
 function TweetDisplay({type}) {
     const [tweets, setTweets] = useState([])
@@ -51,7 +52,7 @@ function TweetDisplay({type}) {
     <div className='p-5 md:p-7 lg:p-10 flex flex-col gap-4 rounded-2xl border border-white/10' >
         <div className='overflow-auto h-96 ' >
             {
-            tweets && [...tweets].reverse().map( (tweet) => (
+            tweets.length ? [...tweets].reverse().map( (tweet) => (
                 <CommentTweetCard 
                 key={tweet.createdAt}
                 id={tweet._id}
@@ -65,7 +66,7 @@ function TweetDisplay({type}) {
                 tweets={tweets}
                 setTweets={setTweets}
                 />
-            ) )
+            ) ) : <Loading/>
         }
         </div>
         { ((user._id==type) || ( type=="all-tweets" && status==true )) && (<div className='' > 

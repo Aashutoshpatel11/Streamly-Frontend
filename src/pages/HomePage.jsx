@@ -7,6 +7,7 @@ import { login } from '../store/authSlice'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import TweetDisplay from '../components/TweetDisplay'
+import Loading from '../components/Loading'
 
 function HomePage() {
     const [activeTab, setActiveTab] = useState('videos');
@@ -62,7 +63,7 @@ function HomePage() {
         {activeTab === 'videos' && (
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6' >
           {
-            videos.map( (video) => (
+            videos.length ? videos.map( (video) => (
               <VideoCard 
               channelId={video.owner?._id}
               key={video._id} 
@@ -78,7 +79,7 @@ function HomePage() {
               openPopupId={openPopupId}
               setOpenPopupId={setOpenPopupId}
               />
-            ) )
+            ) ) : <Loading />
           }
           </div>
         )}

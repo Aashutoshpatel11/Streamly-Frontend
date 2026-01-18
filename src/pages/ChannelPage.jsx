@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import VideoCard from '../components/VideoCard';
 import useSubscribe from '../assets/useSubscribe';
 import TweetDisplay from '../components/TweetDisplay';
+import Loading from '../components/Loading';
 
 const ChannelPage = () => {
     const [activeTab, setActiveTab] = useState('videos');
@@ -46,7 +47,8 @@ const ChannelPage = () => {
     }, [id]);
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-base-100 text-gray-900 dark:text-white">
+        <>
+        {userChannelData ? (<div className="min-h-screen bg-gray-50 dark:bg-base-100 text-gray-900 dark:text-white">
             
             <div className="relative w-full">
                 <div className="w-full h-48 sm:h-64 lg:h-80 bg-gray-700 dark:bg-gray-800">
@@ -170,7 +172,8 @@ const ChannelPage = () => {
                     </div>
                 )}
             </main>
-        </div>
+        </div>) : <Loading />}
+        </>
     );
 };
 
